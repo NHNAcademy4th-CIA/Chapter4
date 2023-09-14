@@ -14,7 +14,7 @@ public class Problem1 {
         Scanner sc = new Scanner(System.in);
 
         String str=sc.nextLine();
-        System.out.println(printCapitalized(str));
+        logger.info(printCapitalized(str));
 
 
     }
@@ -24,7 +24,6 @@ public class Problem1 {
 
 
         if(Character.isLetter(str.charAt(0))){
-
             str=Character.toUpperCase(str.charAt(0))+str.substring(1);
             return str;
         }

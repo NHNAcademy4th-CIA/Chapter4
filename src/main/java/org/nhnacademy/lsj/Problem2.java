@@ -1,9 +1,12 @@
 package org.nhnacademy.lsj;
 
 import java.util.Scanner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Problem2 {
 
+    private static final Logger logger = LoggerFactory.getLogger(Problem2.class);
     public static void problem2() {
 
         Scanner sc = new Scanner(System.in);
@@ -12,14 +15,11 @@ public class Problem2 {
         String str=sc.nextLine();
 
 
-        System.out.println(str);
-
         for(int i=0;i<str.length();i++){
             value=value*16+hexValue(str.charAt(i));
-            System.out.println(value);
         }
 
-        //System.out.println(value);
+        logger.info("정답 값 : {}",value);
 
 
     }
