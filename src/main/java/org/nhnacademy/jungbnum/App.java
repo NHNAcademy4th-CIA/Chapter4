@@ -7,6 +7,7 @@ import org.nhnacademy.jungbnum.domain.Hexa;
 import org.nhnacademy.jungbnum.domain.MyString;
 import org.nhnacademy.jungbnum.domain.quiz.Quiz3;
 import org.nhnacademy.jungbnum.domain.quiz.Quiz4;
+import org.nhnacademy.jungbnum.domain.quiz.Quiz8;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +21,8 @@ public class App {
 //        quiz1(scanner.nextLine());
 //        quiz2(scanner.nextLine());
 //        new Quiz3();
-        new Quiz4();
+//        new Quiz4();
+        new Quiz8();
     }
     public static void quiz1(String line){
 
