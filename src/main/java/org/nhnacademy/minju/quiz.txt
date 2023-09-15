@@ -1,0 +1,106 @@
+Question 1:A "black box" has an interface and an implementation. Explain what is meant by the terms interface and implementation.
+- interface 는 블랙박스의 경계, implementation은 블랙박스의 내부
+- 인터페이스를 통해 implementation과 상호작용을 할 수 있다
+Question 2:A subroutine is said to have a contract. What is meant by the contract of a subroutine? When you want to use a subroutine, why is it important to understand its contract? The contract has both "syntactic" and "semantic" aspects. What is the syntactic aspect? What is the semantic aspect?
+- 서브루틴을 사용하기 위해 무엇을 해야 하는지, 무엇을 할 수 있는지에 대한 명세를 나타낸다
+- 구문적 구성 요소가 서브루틴의 이름, 파라미터 타입과 개수(서브루틴을 호출하기 위해 입력해야하는 것)이고 의미적 구성요소는 서브루틴이 실행하는 작업이므로 모두 서브루틴을 작성하는데 필요한 정보
+Question 3:Briefly explain how subroutines can be useful in the top-down design of programs.
+- 탑다운은 전체 해결 문제에서부터 따로 풀 수 있는 작은 문제로 나누는 방법을 말한다. 서브루틴을 작성하는 목적이 복잡한 프로그램을 덩어리로 나누기 위해 사용하는 것이므로 탑다운에서도 서브루틴을 구성해 작은 문제를 해결할 수 있다
+Question 4:Discuss the concept of parameters. What are parameters for? What is the difference between formal parameters and actual parameters?
+- 외부 정보를 블랙박스 안으로 전달한다. 내부와 밖을 이어줌
+- formal parameter는 서브루틴 정의에 있는 파라미터
+- actual parameter는 서브루틴 호출문에서 사용한다
+Question 5:Give two different reasons for using named constants (declared with the final modifier).
+- 값이 변경되지 않도록 한다
+- 값을 수정하기 쉽다
+Question 6:What is an API? Give an example.
+- 다른 사람들이 수행하는 계산의 세부사항을 이해하지 않고도 그러한 루틴을 사용할 수 있도록 하는 인터페이스 -> 블랙박스의 일종
+- 공공 데이터 포털의 실시간 날씨 api -> 파라미터를 함께 넘기면 json이나 xml과 같은 형식으로 날씨 정보를 리턴해준다
+Question 7:What might the following expression mean in a program?
+(a,b) -> a*a + b*b + 1
+- 람다식(Lambda expression), -> 연산자를 통해 람다식임을 알 수 있음, 함수 인터페이스 필요
+- 매개변수는 a, b이며 return 값이 a*a + b*b + 1
+Question 8:Suppose that SupplyInt is a functional interface that defines the method public int get(). Write a lambda expression of type SupplyInt that gets a random integer in the range 1 to 6 inclusive. Write another lambda expression of type SupplyInt that gets an int by asking the user to enter an integer and then returning the user's response.
+() -> (int)(Math.random()*6)+1
+() -> {
+    System.out.print("Enter integer : ");
+    Scanner scanner = new Scanner(System.in);
+    return scanner.nextInt();
+}
+Question 9:Write a subroutine named "stars" that will output a line of stars to standard output. (A star is the character "*".) The number of stars should be given as a parameter to the subroutine. Use a for loop. For example, the command "stars(20)" would output
+********************
+public static void stars(int starNumber) {
+	for(int i=0;i<starNumber;i++){
+		System.out.print("*");
+	}
+}
+Question 10:Write a main() routine that uses the subroutine that you wrote for Question 7 to output 10 lines of stars with 1 star in the first line, 2 stars in the second line, and so on, as shown below.
+
+*
+**
+***
+****
+*****
+******
+*******
+********
+*********
+**********
+public static void stars(int starNumber) {
+	for(int i=0;i<starNumber;i++){
+		System.out.print("*".repeat(i));
+	}
+}
+Question 11:Write a function named countChars that has a String and a char as parameters. The function should count the number of times the character occurs in the string, and it should return the result as the value of the function.
+public static int countChars(String str, char ch) {
+        int count = 0;
+        for(char idx : str.toCharArray()) {
+            if(idx==ch) {
+                count++;
+            }
+        }
+        return count;
+}
+Question 12:Write a subroutine with three parameters of type int. The subroutine should determine which of its parameters is smallest. The value of the smallest parameter should be returned as the value of the subroutine.
+public static int func(int a, int b, int c) {
+        int[] temp = {a, b, c};
+        int min = a;
+        for (int number : temp) {
+            if(min>number) {
+                min = number;
+            }
+        }
+        return min;
+}
+Question 13:Write a function that finds the average of the first N elements of an array of type double. The array and N are parameters to the subroutine.
+public static double func(double[] arr, int n) {
+        if(n>arr.length || n<1) throw new ArrayIndexOutOfBoundsException("out of range");
+        double sumValue = 0;
+        for (int i = 0; i < n; i++) {
+            sumValue+=arr[i];
+        }
+        return sumValue/n;
+}
+Question 14:Explain the purpose of the following function, and explain how it works:
+
+static int[] stripZeros( int[] list ) {
+    int count = 0;
+    for (int i = 0; i < list.length; i++) {
+        if ( list[i] != 0 )
+            count++;
+    }
+    int[] newList;
+    newList = new int[count];
+    int j = 0;
+    for (int i = 0; i < list.length; i++) {
+        if ( list[i] != 0 ) {
+            newList[j] = list[i];
+            j++;
+        }
+    }
+    return newList;
+}
+count = list 인덱스에 값이 들어있는 인덱스 개수
+개수만큼 배열을 선언
+0이 아닐 때 newList에 값을 넣음
+→ list에서 0인 값을 뺀 배열이 완성된다
