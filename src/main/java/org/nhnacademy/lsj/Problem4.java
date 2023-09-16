@@ -10,10 +10,9 @@ public class Problem4 {
     private static final Logger logger = LoggerFactory.getLogger(Problem4.class);
     public static void problem4() {
 
-        Map<Integer, Integer> m = new HashMap<>();
 
-        double[] tryCount = new double[17];
-        double[] diceRollCount = new double[17];
+        double[] tryCount = new double[13];
+        double[] diceRollCount = new double[13];
 
         int num;
         int count;
