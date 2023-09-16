@@ -33,27 +33,21 @@ public class Problem2 {
 
         switch (ch) {
             case 'A':
-                return 10;
             case 'a':
                 return 10;
             case 'B':
-                return 11;
             case 'b':
                 return 11;
             case 'C':
-                return 12;
             case 'c':
                 return 12;
             case 'D':
-                return 13;
             case 'd':
                 return 13;
             case 'E':
-                return 14;
             case 'e':
                 return 14;
             case 'F':
-                return 15;
             case 'f':
                 return 15;
             default:
