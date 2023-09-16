@@ -1,6 +1,7 @@
 package org.nhnacademy.lsj;
 
 import java.util.Scanner;
+import java.util.StringTokenizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,24 +14,26 @@ public class Problem1 {
 
         Scanner sc = new Scanner(System.in);
 
-        String str=sc.nextLine();
-        logger.info(printCapitalized(str));
-
+        StringTokenizer stk = new StringTokenizer(sc.nextLine());
+        logger.info(printCapitalized(stk));
 
     }
 
 
-    public static String printCapitalized(String str){
+    public static String printCapitalized(StringTokenizer str){
 
 
-        if(Character.isLetter(str.charAt(0))){
-            str=Character.toUpperCase(str.charAt(0))+str.substring(1);
-            return str;
-        }
-        else{
+        String word;
+        String answer="";
+        while(str.hasMoreTokens()){
+            word=str.nextToken();
+            if(Character.isLetter(word.charAt(0))){ // 만약 문자면
+                answer+=Character.toUpperCase(word.charAt(0))+word.substring(1)+" ";
+                continue;
+            }
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
-
+        return answer;
     }
 
 
