@@ -1,0 +1,638 @@
+Black Boxes and Procedural Abstraction
+
+서브루틴 {} 으로 Chunking돼있는것 들 (덩어리)
+우리는 서브루틴의 이름만 알면 Ex) 클래스 , 메서드 이름 
+이름만으로 서브루틴을 호출 가능해 , 그래서 매우 편하게 쓸 수 있음(Procedural Abstraction의 예시, 절차추상화)
+
+또 갖다 쓰기는 하지만 내부가 어떻게 구현됐는지 몰라도 상관없어
+그것을 Black Box라고 말함 , 사실 내부가 어떻게 구현됐는지 몰라도 
+쓸 수 있게 만드는게 올바른 방향임
+
+이런 블랙박스는 상자 내부와 외부의 상호작용을 허용해주는 인터페이스가 필요함
+Ex) 누를수 있는 버튼 , 설정 다이얼 등
+
+블랙박스 내부는 implementation , 구현이라 함 
+여전히 우리는 구현이 어떻게 됐는지 몰라도 됨 
+
+또 인터페이스는 상호작용을 허용해 줌 뿐만 아니라 specification 을 명시해야함
+TV에 전원 스위치가 있다 (X) -> TV를 켜고 크는 데 전원 스위치가 사용된다. (O)
+
+서브루틴을 잘 사용하기 위해서는 syntactic한 부분 + semantic한 부분 둘 다 필요
+(문법적인 것 , 효용성) 둘 다 , 이 둘을 묶어 서브루틴의 contract라 (계약)함
+
+ 서브루틴의 계약은 기본적으로 
+이걸 쓰기위해 당신이 할 일 + 내가 당신을 위해 할 일 
+따라서 주석을 매우 명확하게 작성해야 한다.
+
+
+
+
+Static Subroutines and Static Variables
+
+서브루틴 = {} 으로 된 모든것 , 클래스 , 메서드 모든 것 포함 인줄 알았는데
+-> 서브루틴은 클래스 내부에 정의되어야 한다 . 
+
+더 읽어보니 서브루틴이 정확한 말이고 이게 와전되어 C에서는 Function JAVA에서는 Methode 라고 부르는 듯 
+본질적으로는 함수 = 메서드 = 값을 계산하고 반환하는것 
+서브루틴 = 위의 경우를 포함해 상태가 바뀌는등 반환값이 없는 것 까지 포함  즉 , void 까지 포함 
+
+static , non - static 
+
+static 달려있으면 클래스변수
+없으면 그냥 필드 변수 
+
+차이는 메모리에 적재되는 게 달라
+static 한 애들은 DATA영역에 올라가 
+따라서 객체 생성 해서 쓸 필요가 없음 
+애초에 메모리 올라가 있는거
+
+
+서브루틴에서 {} 안에있는게 body 역할 , 실질적으로 서브루틴을 정의내림 
+
+
+서브루틴 {} 안에있는 변수 = 로컬변수 , 거기서만 사용 가능
+서브루틴안에 없고 클래스가 가지고 있다 = 맴버변수 or 필드변수  or 전역변수 
+
+
+
+Parameters
+
+매개변수 = 서브루틴 블랙박스의 인터페이스 일종
+
+매개변수는 서브루틴 외부에서 값을 가져온다 -> 사용자가 넣어주는 거 
+ 
+서브루틴을 정의할떄 들어가는 매개변수 = formal Parameter or dummy Parameter 
+
+서브루틴을 사용하기 위해 사용자가 넣는 것 = actual parameter or arguments 
+
+서브루틴은 signature 를 가진다 
+시그니쳐 = 이름 (매개변수)
+
+같은 이름에 매개변수가 다르다면
+
+똑같은 이름의 서브루틴을 여러개 사용 가능하다
+이게 Methode Overloading ,  Polymorphism 의 일종이기도 하고 , ad hoc 방식이라고도 한다.
+
+
+ Command-line Arguments 가 있다
+
+이는 main메서드를 호출할떄 들어가는 
+public static void main(String []args) 
+에서의 args를 의미한다.
+
+이는 일반적인 경우에 길이가 0 인 빈 배열이고 프로그램에서 사용되지 않는다.
+
+주로 명령줄 인수는 파일 이름을 프로그램에 전달하는 데 자주 사용됩니다.
+
+
+필드변수는 클래스 내부에서는 어디서든지 사용 가능하기 떄문에
+서브루틴에서도 마찬가지로 사용 가능하다
+
+하지만 블랙박스의 인터페이스가 사용하고 이해하기 쉬어야한다는 원칙에
+위배될수 있음으로 지향하는게 좋다.
+
+
+
+
+Return Values
+
+값을 반환하는 서브루틴 = 함수
+
+
+
+Lambda Expressions
+
+람다 표현식을 쓰면 함수 이름을 지정하지 않고도 쓰기 가능
+
+(x1,x2)->x1+x2;
+간단한 sum 함수
+
+만약 특정한 연산을 한번만 사용해야 한다면
+그것을 위해 따로 서브루틴을 정의하는 것은 낭비일수도 있다. -> 이럴때 그냥 람다 쓰면 굿
+
+이런 람다표현식으로 함수를 대체 하는 것을 First-Class Function 이라고 한다.
+
+
+근데 자바는 완전히 First-Class Function을 지원하진 않음
+왜? 변수에다가 (x)->x*x 넣을순 있지만 , 이걸 실제 함수처럼 쓸수는 없어
+
+함수처럼 쓸라면 Functional Interface라는 타입을 정의하고 그거에 맞게 써야 해
+
+
+Functional Interfaces는 하나의 서브루틴을 가지는 인터페이스를 의미한다.
+어노테이션으로 @FuncitonalInterface  이런식으로 명시적 표기가 가능함
+
+그리고 이 경우에는 람다식으로 대체가 가능해
+
+
+람다식 = 익명 서브루틴 , 이름이 없는 서브루틴임
+
+
+기본적인 람다 표현
+
+
+(매개변수) -> {함수몸체}
+() -> {함수몸체)
+(매개변수) -> 함수몸체
+(매개변수) -> {return 0;}
+
+return 은 생략이 가능해
+
+//return 생략
+@FunctionalInterface
+public interface A {
+    String test();
+}
+
+public static void main(String[] args) {
+    //return 생략
+    A sample1 = () - > "sample1";
+    System.out.println(sample1.test());
+
+		//return 생략 안함
+    A sample2 = () - > {
+        return "sample2";
+    };
+    System.out.println(sample2.test());
+
+}
+
+
+람다는 위와 같이 직접적으로 넣을수도 있지만
+
+Methode Referecne 할수도 있다.
+
+Math::sqrt 이런식으로 함수의 인자로 던져주기 가능함
+static 메서드를 사용 가능 !
+
+
+
+APIs, Packages, Modules, and Javadoc
+
+
+Toolboxes
+
+운영체제나,프로그램 언어는 기본적으로 기본 SubRoutine의 Set을 제공한다.
+변수 ifelse , for ,,,,
+
+프로그래머는 이미 작성된 루틴으로 가득 찬 기존 Tollboxes이외에도
+추가가 가능함
+
+소프트웨어 tool box는 일종의 블랙박스이기도 하다.
+또한 프로그래머가 사용 가능하도록 인터페이스를 제공한다.
+
+이 인터페이스는 Tool Box에 있는 루틴 , 매개변수 , 작업에대한 specification을 의미
+
+자바의 경우는 대규모 표준 API가 존재함
+
+Math.sqrt() , Math.random() 등등
+
+API는 기본적으로 Tool Box에 있는 기능에 접근하는데 사용되는 추상화다.
+
+
+Tool Box = 특정한 목적으로 모아둔 서브루틴의 집합
+
+Tool Box를 간략화 시켜서 =  추상화 시켜서 = Abstrac하게 만들어서
+사용하고싶다 , -> API , 이건 Tool Box에 블랙박스 역할도 가능하게 해주며
+각각의 기능에 Specification을 제공함으로 사양 보고 따라 쓰기만 하면 구동원리
+몰라도 우리가 쓸수 있어 , 이것또한 Procedure Abstraction 이라 볼 수 있을듯(절차 간략화)
+
+
+
+Java's Standard Packages
+자바의 모든 서브루틴과 동일하게 Standard(표준) API의 루틴도 클래스로 그룹화 된다.
+
+Ex) Java.lang.Math
+Java.util.Scanner
+Java.io.File
+
+자바 Class -> lang Class -> 안에있는 Math Class 쓸 거야
+
+Math.sum()   Math Class 가 갖고있는 서브루틴 sum 을 써먹겠다.
+
+
+Using Classes from Packages
+
+표준 API를 처음부터 갖고있을 필욘 없잖아
+그러니까 내가 쓰고 싶다면 import해서 가져오면 돼
+
+import java.util.*;
+*는 모든 클래스와 일치하는 whild card임  , wild card = 이름 대신에 여러 파일을 동시에 지정하겠다
+util class 안에있는거 다 떙겨와서 쓰겠다는 의미(하위패키지는 포함 안함)
+
+근데 이러면 namespace도 다 떙겨와서 불편할 수도 있어 , 좋은 방법은 아냐
+
+그냥 하나하나 import하는게 더 좋을 듯
+
+또 이거는 명령문 이라기 보단 지시문에 가깝다. mport directive
+
+
+
+About Modules
+
+자바 9부터 모듈이 도입됨
+
+모듈 = 패키지 모음
+묘듈에는 변수와 메서드가 포함된 클래스가 포함된 패키지가 포함돼있다.
+
+그럼 모듈은 왜 써?
+
+모듈은 Export가 가능해 이거 Export해서 쓰면
+어디에서나 이 모듈에 접근 가능해
+
+또 모듈화를 사용하면 애플케이션에 필요한 모듈만 포함하는
+더 작은 사용자 정의 JRE를 구성 가능함 , 경량화 가능
+
+
+
+ Javadoc
+
+API를 효과적으로 사용하려면 문서로 표기해놓으면 더 좋음
+
+이떄 쓰는게 Javadoc , 주로 소스코드 파일에 주석처리 해서 사용함
+/** 로 시작하면 자바독
+
+또한 표시해놓으면 서브루틴 사용할떄 내가 표기해 놓은 내용이 나와
+사용자가 훨씬 잘 알아들을수 있음
+
+
+
+ Static Import
+
+ static import로 사용함
+
+ import = 패키지에서 클래스 가져오는 것
+ static import = 패키지에서 클래스의 static 맴버를(변수,메서드) 가져오는 것
+
+이러한 static import를 하면
+
+import static java.lang.Math.*;
+
+Math.max() 이런식으로 사용 안하고
+그냥 max() 이런식으로 사용해도 됨
+Math.PI 안하고 PI도 가능
+
+왜?? PI , max() 이런애들은 static 변수 매서드 니까요
+
+
+More on Program Design
+
+
+PreConditions and PostConditions
+
+서브루틴을 사용할때는 서브루틴의 contract에 맞게 사용해야 해
+
+우리가 contract를 잘 따르고 있는지 체크하기 위해
+
+PreCondition , PostCondition 보는 거야
+
+전제조건 , 사후조건
+
+Pre = 주로 파라미터로 들어가는 값 , 인풋값 , 분수인데 분모가 0이라던가 하는 초기화와 관련된 것들
+Post= 주로 연산이 실행되고 난후의 결과가 , 아웃풋 값이 똑바로 나오는지
+
+PreCondiiton이 잘못 된다면 아예 동작을 안해야 맞는거야
+이건 호출자 , 즉 사용자의 의무야 , 명시된 것에 맞게 똑바로 써야해
+
+PoseCondition은 서브루틴의 의무야
+사용자가 specification에 맞게 사용했다면 너는 올바른 연산을 해내야 해
+
+이런 조건들이 맞지 않으면 예외처리 해주는게 맞음 !
+
+
+
+The Truth About Declarations
+
+Initialization in Declarations
+
+선언의 초기화
+
+변수를 선언한다 , declare 한다
+
+이건 int num; 이런것
+여기서 초기화 까지 같이 해주면
+이제는 define한게 됨 , 정의 내린게 됨 !
+int num = 5 ;
+
+
+
+ Declaring Variables with var
+
+ var를 이용해 선언이 가능해
+
+ type을 지정하는 대신 var를 써서 선언이 가능해
+
+
+ var number = 0.05;
+
+var nameList = new String[100];
+
+
+for(var i=0;i<10;i++
+{
+sout();
+}
+
+다 가능합니다.
+
+
+
+Named Constants
+
+상수
+
+Constant하다 = 상수 = 값 변경 없음 =  자바에서는 보통 public static final 로 지정
+
+이렇게되면 변경이 불가능하고 어디서든 이 변수를 공유하게 됨.
+따라서 고정적인 값 , 변화하지 않을 값에 상수처리를 해서 쓸 수 있음 .
+
+대표적으로 Math.PI 같은게 있음 , 이건 안바뀜
+
+
+enum class 안에 있는 애들도 , 상수들이야
+
+enum Alignment{LEFT,RIGHT}
+
+이건 사실
+
+public static final int LEFT=0;
+public static final int RIGHT=1;
+과 같아
+
+
+
+Naming and Scope Rules
+
+변수 선언이 실행되면 변수에 대한 메모리가 할당 됨
+
+그리고 이 변수는 사용이 가능해짐 , but 어디에서든지 사용이 가능한 것은 아냐
+
+이 변수가 유효하게 사용될수 있는 부분을 Scope(범위)라 함
+
+예를들어 서브루틴 안에 선언된 변수는 해당 서브루틴 밖에서는 쓸 수가 없어
+
+void go(){
+    int n=10; // 이 go의 bracket 넘어가면 못씀 , go의 bracket이 Scope인것임
+
+}
+
+
+또 재정의 하지마라
+
+int num=10;
+int num=5;
+이런식으로 재정의하면 안되용 , 이미 정의 된걸 또 정의 하지마용
+
+
+
+
+Question 1:
+
+A "black box" has an interface and an implementation. Explain what is meant by the terms interface and implementation.
+
+블랙박스는 Procedural Abstraction을 의미합니다.
+특정한 연산을 하는 것을 간략화 시킨 것으로
+사용자가 서브루틴 내부의 구현을 전혀 몰라도 사용에 문제가 없습니다.
+
+하지만 Specification을 명시해 줘야 합니다.
+Ex) parameter 의 타입 및 개수 , 범위 등등
+이러한것은 인터페이스에 속합니다.
+
+implementation 은 내부의 구현을 의미합니다.
+
+
+Question 2:
+
+A subroutine is said to have a contract. What is meant by the contract of a subroutine?
+When you want to use a subroutine, why is it important to understand its contract?
+The contract has both "syntactic" and "semantic" aspects. What is the syntactic aspect?
+What is the semantic aspect?
+
+서브루틴의 contract(계약은) 나의 책임 + 유저의 책임을 의미합니다
+이것의 의미는 서브루틴을 사용하는 유저는 이 서브루틴을
+Specification에 맞게끔 사용해야 합니다.
+
+그렇게 유저의 책임을 다했다면 그 뒤는 만든이의 책임입니다.
+즉 올바른 return값을 반환해줘야 합니다.
+
+이러한 상호관계때문에 계약 이라는 말을 쓰며 서브루틴을 사용하려면 필수적으로 이해해야 합니다.
+
+기본적으로 contract는 syntactic과 semantic의 결합인데
+syntactic은 앞서 말했듯이 Specification에 맞는 파라미터나 반환값을 지정해야 합니다.
+이건 지키지 못할 경우 문법적 오류가 나옵니다.
+
+symantic은 올바른 값을 반환해줘야 한다는 의미입니다.
+
+
+Question 3:
+
+Briefly explain how subroutines can be useful in the top-down design of programs.
+
+top-down 방식이란 큰 문제를 해결하기 위해 작은 문제를 먼저 해결하는 것입니다.
+
+주로 재귀를 이용해 구현되며 , 재귀를 써야 편하게 풀 수 있는 경우에 유용합니다.
+
+Ex) 피보나치의 재귀함수 구현 , N을 입력받는데 N-1 N-2 함수를 더 불러워 점점 작은 단계로 쪼개짐
+
+
+
+Question 4:
+
+Discuss the concept of parameters. What are parameters for? What is the difference between formal parameters
+and actual parameters?
+
+파라미터는 서브루틴에서 사용되며 서브루틴 외부에서 값을 받아 사용하고 싶을때 사용됩니다.
+
+formal parameter는 매개변수를 정의할떄 들어가는 이름이며
+actual parameter는 실제로 서브루틴을 사용할떄 내가 넣어주는 값입니다.
+
+
+
+Question 5:
+
+Give two different reasons for using named constants (declared with the final modifier).
+
+상수를 사용하면 모든 클래스에서 값을 공유하기 떄문에
+변화하지 않는 값을 여러군대서 사용해야 한다면 , static한 상수로 선언하여 사용하면 편리합니다.
+
+또 static final로 선언되기 떄문에 , 클래스를 타입의 객체를 만들어쓰지 않아도 해당 상수를 사용 가능합니다.
+
+
+
+Question 6:
+
+What is an API? Give an example.
+
+API는 ToolBox를 추상화시켜 쓸 수 있게끔 해줍니다.
+ToolBox는 프로그래밍에 유용한 서브루틴의 집합입니다.
+
+이 서브루틴의 집합을 간략화시켜서 = 추상화시켜서 사용할수 있게끔 해주는 것
+각각의 기능에 따른 Specification을 따라 하기만 하면 됨.
+
+예를들면 Math Class도 표준 API의 일종임
+
+
+
+
+Question 7:
+
+What might the following expression mean in a program?
+
+(a,b) -> a*a + b*b + 1
+
+인자 a,b를 받았을떄 a^2 +b^2+1을 return한다.
+
+
+
+Question 8:
+
+Suppose that SupplyInt is a functional interface that defines the method public int get().
+Write a lambda expression of type SupplyInt that gets a random integer in the range 1 to 6 inclusive.
+Write another lambda expression of type SupplyInt that gets an int by asking the user to enter an integer and then returning the user's response.
+
+public static Supplyint random() {
+
+        return () -> {
+            return (int)(Math.random()*6+1);
+        };
+    }
+
+public static Supplyint random(int num) {
+        return () -> {
+            Scanner sc = new Scanner(System.in);
+            sout("입력해주세여)"
+            return sc.nextInt();
+        };
+    }
+
+
+
+
+
+Question 9:
+
+Write a subroutine named "stars" that will output a line of stars to standard output.
+(A star is the character "*".) The number of stars should be given as a parameter to the subroutine.
+Use a for loop. For example, the command "stars(20)" would output
+
+********************
+
+void stars(int num){
+    for(int i=0;i<num;i++){
+        sout('*');
+    }
+}
+
+
+
+Question 10:
+
+Write a main() routine that uses the subroutine that you wrote for Question 7 to output 10 lines of stars
+with 1 star in the first line, 2 stars in the second line, and so on, as shown below.
+
+*
+**
+***
+****
+*****
+******
+*******
+********
+*********
+**********
+
+
+main(){
+
+    for(int i=0;i<10;i++){
+        for(int j=0;j<=i;j++){
+            sout('*');
+            }
+            sout("\n");
+        }
+}
+
+
+Question 11:
+
+Write a function named countChars that has a String and a char as parameters.
+The function should count the number of times the character occurs in the string,
+and it should return the result as the value of the function.
+
+
+함수
+String str;
+char ch;
+
+for(str 처음부터 끝까지)
+    if(str.charAt(i)==ch)
+        카운트
+
+
+Question 12:
+
+Write a subroutine with three parameters of type int. The subroutine should determine which of its parameters is smallest.
+The value of the smallest parameter should be returned as the value of the subroutine.
+
+
+list.add(매개변수);
+
+list size 3
+
+Collection.sort(list); 오름차순 정렬
+
+return list.get(0);
+
+
+
+Question 13:
+
+Write a function that finds the average of the first N elements of an array of type double.
+The array and N are parameters to the subroutine.
+
+
+메서드
+
+for(0부터 N까지)
+    total +=배열 값
+
+return total/N;
+
+
+Question 14:
+
+Explain the purpose of the following function, and explain how it works:
+
+static int[] stripZeros( int[] list ) {
+    int count = 0;
+    for (int i = 0; i < list.length; i++) {
+        if ( list[i] != 0 ) // 0아닌것의 개수 새기
+            count++;
+    }
+    int[] newList;
+    newList = new int[count]; // 그것만큼 배열 만듦
+    int j = 0;
+    for (int i = 0; i < list.length; i++) {
+        if ( list[i] != 0 ) {
+            newList[j] = list[i]; // 배열에 0아닌수 저장함
+            j++;
+        }
+    }
+    return newList;
+}
+
+list배열에 있는 0을 제거한 배열을 반환합니다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
