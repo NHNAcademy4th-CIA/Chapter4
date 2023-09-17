@@ -14,7 +14,7 @@ public class Quiz8 {
         {
             Expressiona expression = new Expressiona();
             logger.info("{} = ",expression.print());
-            if(expression.compare(scanner.nextInt()))
+            if(expression.grading(scanner.nextInt()))
             {
                 answer+=10;
             }
@@ -35,7 +35,7 @@ class Expressiona{
     {
         return leftValue + " + " + rightValue;
     }
-    public boolean compare(int playerAnswer){
+    public boolean grading(int playerAnswer){
         return answer ==playerAnswer;
     }
 }
