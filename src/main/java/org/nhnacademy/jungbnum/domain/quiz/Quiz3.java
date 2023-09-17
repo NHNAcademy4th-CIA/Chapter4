@@ -27,10 +27,10 @@ class DiceGame {
     private DiceGame() {
     }
 
-    private static int minValue = 1;
-    private static int maxValue = 12;
+    private static final int minValue = 2;
+    private static final int maxValue = 12;
 
-    private static int snakeEye = 2;
+    private static final int snakeEye = 2;
 
     public static int isSnakeEye() {
         int count = 0;
@@ -53,7 +53,7 @@ class DiceGame {
         return count;
     }
     private static boolean isSelectNumber(int selectNumber){
-        return  minValue < selectNumber && maxValue >= selectNumber;
+        return  minValue <= selectNumber && maxValue >= selectNumber;
 
     }
 
