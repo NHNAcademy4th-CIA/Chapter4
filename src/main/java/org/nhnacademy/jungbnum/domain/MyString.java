@@ -27,7 +27,7 @@ public class MyString {
             char[] cArray = word.toCharArray();
             if(Character.isLetter(cArray[0]))
                 cArray[0]=Character.toUpperCase(cArray[0]);
-            stringBuilder.append(String.valueOf(cArray)+" ");
+            stringBuilder.append(String.valueOf(cArray)).append(" ");
         }
         logger.info("{}",stringBuilder);
 
