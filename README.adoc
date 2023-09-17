@@ -1,0 +1,195 @@
+= Chapter3
+Firstname Lastname <author@asciidoctor.org>
+3.0, July 29, 2022: AsciiDoc article template
+:toc:
+:icons: font
+:url-quickref: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
+
+
+== 1."블랙박스"에는 인터페이스와 구현이 있습니다. 인터페이스 와 구현 이라는 용어의 의미를 설명하세요 .
+
+.블랙박스란?
+====
+안이 보이지 않는거
+====
+
+.인터페이스란?
+====
+====
+.구현이란?
+====
+====
+
+== 2.서브루틴에는 계약이 있다고 합니다 . 서브루틴 계약이란 무엇을 의미합니까? 서브루틴을 사용하려는 경우 해당 계약을 이해하는 것이 왜 중요합니까? 계약에는 "구문적" 측면과 "의미론적" 측면이 모두 있습니다. 구문론적인 측면은 무엇입니까? 의미론적 측면은 무엇인가?
+
+.졔약?
+====
+====
+
+== 3.프로그램의 하향식 설계에서 서브루틴이 어떻게 유용할 수 있는지 간략하게 설명하십시오.
+====
+문제해결을 위한 프로그램을 설계할때 점진적으로 작성할수있다.
+====
+
+== 4.매개변수 의 개념에 대해 토론해 보세요 . 매개변수란 무엇입니까? 형식 매개변수 와 실제 매개변수 의 차이점은 무엇입니까 ?
+.형식매개변수?
+====
+====
+.실제매개변순?
+====
+====
+
+== 5.명명된 상수( 최종 수정자로 선언됨) 를 사용하는 두 가지 다른 이유를 제시하세요 .
+.다른이유
+====
+재사용성과
+바뀌지않는 수들이 있기때ㅔ문.
+====
+
+== 6. API란 무엇입니까? 예를 들어보세요.
+.API란?
+====
+다른 누군가가 사용할수있게 해주는 인터페이스
+====
+
+
+
+== 7. 프로그램에서 다음 표현은 무엇을 의미할까요?
+
+.code
+[source,java]
+----
+(a,b) -> a*a + b*b + 1
+----
+
+.해석
+====
+a b는 매개변수 이를 이용하여 우측 식을 실행하며 이를 람다식이라 한다.
+====
+
+== 8.SupplyInt가 public int get() 메서드를 정의하는 기능적 인터페이스라고 가정합니다 . 1부터 6까지의 범위에서 임의의 정수를 가져오는 SupplyInt 유형의 람다 식을 작성합니다 . 사용자에게 정수를 입력하도록 요청한 다음 사용자의 응답을 반환하여 int를 가져오는 SupplyInt 유형의 또 다른 람다 식을 작성합니다 .
+.code
+[source,java]
+----
+() -> (int)(1+Math.random()*6)
+() -> {
+    scanner.nextInt();
+}
+----
+
+== 9. 별 라인을 표준 출력으로 출력하는 "stars"라는 서브루틴을 작성하십시오. (별은 "*" 문자입니다.) 별 개수는 서브루틴에 대한 매개변수로 제공되어야 합니다. for 루프를 사용하세요 . 예를 들어, "stars(20)" 명령은 다음을 출력합니다.
+
+
+.code
+[source,java]
+----
+public void stars(int value)
+{
+    for(int interface=0;i<value;i++)
+    {
+        sout("*");
+    }
+}
+----
+
+
+== 10.아래와 같이 질문 7에 대해 작성한 서브루틴을 사용하여 첫 번째 줄에 별 1개, 두 번째 줄에 별 2개 등 별 10줄을 출력하는 main() 루틴을 작성 합니다 .
+.code
+[source,java]
+----
+for(int i=0;i<10;i++)
+{
+    for(int j=0;j<=i;j++)
+    {
+        System.out.print("*");
+    }
+        System.out.println();
+}
+----
+
+
+== 11.String 과 char을 매개변수로 갖는 countChars 라는 함수를 작성하세요 . 함수는 문자열에서 해당 문자가 나타나는 횟수를 계산하고 그 결과를 함수 값으로 반환해야 합니다.
+[source,java]
+----
+public int countChars(String line, char b)
+{
+    int count =0;
+    for(char c:line.toCharArray())
+    {
+        if(c==b)
+            count++;
+    }
+    return count;
+}
+----
+
+== 12. int 유형의 매개변수 세 개를 사용하여 서브루틴을 작성합니다 . 서브루틴은 해당 매개변수 중 가장 작은 것이 무엇인지 결정해야 합니다. 가장 작은 매개변수의 값이 서브루틴의 값으로 반환되어야 합니다.
+
+[source,java]
+----
+public int compare(int a, int b, int c) {
+   int min =Msth.max();
+   min=min>a?a:(a>b)?b:(b>c)?c:b;
+   return min;
+}
+----
+
+== 13. double 유형 배열의 처음 N 개 요소 의 평균을 구하는 함수를 작성하세요 . 배열과 N은 서브루틴에 대한 매개변수입니다.
+[source,java]
+----
+double[] value;
+double answer = 0;
+for(double v : value)
+{
+    answer+=y;
+}
+sout(answer/value.length())
+
+// end::[]
+----
+
+== 14.Explain the purpose of the following function, and explain how it works:
+.code
+[source,java]
+----
+static int[] stripZeros( int[] list ) {
+    int count = 0;
+    for (int i = 0; i < list.length; i++) {
+        if ( list[i] != 0 )
+            count++;
+    }
+    int[] newList;
+    newList = new int[count];
+    int j = 0;
+    for (int i = 0; i < list.length; i++) {
+        if ( list[i] != 0 ) {
+            newList[j] = list[i];
+            j++;
+        }
+    }
+    return newList;
+}
+----
+====
+
+====
+
+
+== 15. 숫자 배열의 범위를 배열의 최대값에서 최소값을 뺀 값으로 정의합니다 . raceTimes가 double[] 유형의 배열 이라고 가정합니다 . raceTimes 범위를 찾아 인쇄하는 코드 세그먼트를 작성하세요 .
+
+.code
+[source,java]
+----
+int max = 0;
+int min = Math.min();
+int[] arr;
+for(int i=0;arr.length;i++)
+{
+    max = (max<=arr[i])?arr[i]:max;
+    min = (min<=arr[i])?min:arr[i];
+
+}
+System.out.println(max-min);
+----
+
+
