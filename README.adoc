@@ -1,0 +1,64 @@
+= Chapter 4 프로그래밍 문제 및 퀴즈 정의
+
+=== link:https://math.hws.edu/javanotes/c4/exercises.html[Programing Exercise For Chapter 4]
+
+---
+
+==  Chapter 4 Quiz
+
+* Question 2: A subroutine is said to have a contract. +
+What is meant by the contract of a subroutine?
+When you want to use a subroutine, why is it important to understand its contract? +
+The contract has both "syntactic" and "semantic" aspects.
+What is the syntactic aspect?
+What is the semantic aspect?
+
+.Answer
+[%collapsible%open]
+====
+
+contract란 나의 책임과 너의 책임이 합쳐진 것을 의미합니다.
+
+여기서 나의 책임이란 Syntax에 맞게 즉 명시된 Specification에 따라서 메서드나 프로그램을 사용하는 것을 의미 합니다.
+
+너의 책임은 사용자가 Specification에 맞게 프로그램을 사용한다면 항상 올바른 결과 값을 나타내야 한다는 것 입니다.
+
+이러한 것들이 합쳐서 일종의 contract 라고 불립니다.
+====
+
+* Question 4: Discuss the concept of parameters. +
+What are parameters for?  +
+What is the difference between formal parameters and actual parameters?
+
+.Answer
+[%collapsible%open]
+====
+
+formal parameter란 메서드에 명시된 변수의 이름을 의미합니다.
+
+만약 add (int num) 라면 formal parameter는 num이 됩니다.
+
+메서드 사용을 다음과 같이 한다면 add(5);
+
+Actual Parameter는 5가 됩니다. 즉 실질적으로 들어가는 parameter를 의미합니다.
+====
+
+* Question 5: Give two different reasons for using named constants +
+(declared with the final modifier).
+
+.Answer
+[%collapsible%open]
+====
+public static final
+
+특정한 목적으로 사용되는 Literal을 유의미한 이름으로 구분 지을수 있습니다.
+
+값의 변경을 막아 원하지 않는 값 변경을 차단 할 수 있습니다.
+
+====
+
+
+
+
+
+
