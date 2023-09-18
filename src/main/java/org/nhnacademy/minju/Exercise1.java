@@ -1,21 +1,24 @@
 package org.nhnacademy.minju;
 
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Exercise1 {
 
     public static StringBuilder printCapitalized() {
         StringBuilder sb = new StringBuilder();
         Scanner scanner = new Scanner(System.in);
-        char[] ch = scanner.nextLine().toCharArray();
+        StringTokenizer st = new StringTokenizer(scanner.nextLine());
 
-        sb.append(Character.toUpperCase(ch[0]));
-        for (int i = 1; i < ch.length; i++) {
-            if (!Character.isLetter(ch[i - 1])) {
-                sb.append(Character.toUpperCase(ch[i]));
-            } else {
-                sb.append(ch[i]);
+        String temp;
+        while (st.hasMoreTokens()) {
+            temp = st.nextToken();
+            if (Character.isLetter(temp.charAt(0))) {
+                sb.append(Character.toUpperCase(temp.charAt((0)))).
+                        append(temp.substring(1)).append(" ");
+                continue;
             }
+            throw new IllegalArgumentException("잘못된 입력입니다.");
         }
         return sb;
     }
