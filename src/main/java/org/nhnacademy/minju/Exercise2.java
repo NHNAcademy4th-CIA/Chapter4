@@ -3,7 +3,7 @@ package org.nhnacademy.minju;
 import java.util.Scanner;
 
 public class Exercise2 {
-    public static int toHex() {
+    public static int toDecimal() {
         Scanner scanner = new Scanner(System.in);
         String str = scanner.nextLine();
         int value = 0;
@@ -13,6 +13,13 @@ public class Exercise2 {
         }
         return value;
     }
+
+    /**
+     * "AAA"
+     * 0*16 + "A"
+     * "A"*16 + "A"
+     * ("A"*16+"A")*16 + "A"*16^0
+     */
 
     private static int hexValue(char ch) {
         if (ch >= '0' && ch <= '9') {
