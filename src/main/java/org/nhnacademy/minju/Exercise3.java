@@ -9,13 +9,13 @@ public class Exercise3 {
         int number = scanner.nextInt();
 
         if (number > 1 && number <= 12) {
-            return snakeEyes(number);
+            return rollDice(number);
         } else {
             throw new IllegalArgumentException("가능한 총계가 아닙니다.");
         }
     }
 
-    public static int snakeEyes(int target) {
+    public static int rollDice(int target) {
         int count = 0;
         int random1;
         int random2;
@@ -24,7 +24,7 @@ public class Exercise3 {
             count++;
             random1 = (int) (Math.random() * 6) + 1;
             random2 = (int) (Math.random() * 6) + 1;
-        } while (random1+random2 != target);
+        } while (random1 + random2 != target);
         return count;
     }
 }
